@@ -24,6 +24,7 @@ export class Profile {
         console.log('render DOM');
         const span = document.createElement('span');
         span.textContent = this.profileText;
+        span.classList.add('ProfileSpan__string');
         this.#parent.appendChild(span);
     };
 

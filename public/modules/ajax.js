@@ -31,7 +31,7 @@
             xhr.withCredentials = true;
 
             xhr.addEventListener('readystatechange', function() {
-                if (xhr.readyState !== 4) return;
+                if (xhr.readyState !== xhr.DONE) return;
 
                 callback(xhr.status, xhr.responseText);
             });
