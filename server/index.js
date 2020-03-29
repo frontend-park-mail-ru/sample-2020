@@ -6,6 +6,7 @@ const cookie = require('cookie-parser');
 const morgan = require('morgan');
 const uuid = require('uuid/v4');
 const path = require('path');
+const opn = require('opn');
 const app = express();
 
 app.use(morgan('dev'));
@@ -79,7 +80,7 @@ app.post('/login', function (req, res) {
   const id = uuid();
   ids[id] = email;
 
-  res.cookie('podvorot', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
+  res.cookie('podvorot', id, {expires: new Date(Date.now() + 10000 * 60 * 10)});
   res.status(200).json({id});
 });
 
@@ -99,4 +100,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
   console.log(`Server listening port ${port}`);
+  opn('http://localhost:3000/index.html');
 });
